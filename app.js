@@ -9,13 +9,21 @@ async function getColleges(){
 }
 
 btn.addEventListener("click", async () => {
+    ul.innerText = "";
+    inpState = document.querySelector("input").value;
     let res = await getColleges();
-    console.log(res);
-    for(re of res){
-        let li = document.createElement('li');
-        li.innerText = re.name;
-        ul.appendChild(li);
-    }
-
+    resList = res.filter((re) => {
+        if(re['state-province'] == inpState){
+            return re;
+        }
+    })
+    displayColleges(resList);
 })
 
+function displayColleges(colArr){
+    for(col of colArr){
+        let li = document.createElement('li');
+        li.innerText = col.name;
+        ul.appendChild(li);
+    }
+}
