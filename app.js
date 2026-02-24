@@ -8,6 +8,7 @@ async function getColleges(){
     return res.data;
 }
 
+// Adding click event listeners for button
 btn.addEventListener("click", async () => {
     ul.innerText = "";
     inpState = document.querySelector("input").value;
@@ -20,6 +21,7 @@ btn.addEventListener("click", async () => {
     displayColleges(resList);
 })
 
+// Helper fn for displaying
 function displayColleges(colArr){
     for(col of colArr){
         let li = document.createElement('li');
